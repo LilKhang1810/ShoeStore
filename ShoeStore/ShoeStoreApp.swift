@@ -11,7 +11,6 @@ class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication,
                    didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
     FirebaseApp.configure()
-    print ("Firebase has connected")
     return true
   }
 }
@@ -22,7 +21,7 @@ struct ShoeStoreApp: App {
     @StateObject var authencationManager = AuthencationController()
     var body: some Scene {
         WindowGroup {
-           ContainerView()
+           MainView()
                 .environmentObject(shoeManager)
                 .environmentObject(authencationManager)
         }

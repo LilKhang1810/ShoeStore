@@ -99,22 +99,21 @@ struct LoginView_Previews: PreviewProvider {
     }
 }
 struct SignUpView: View {
-    @State var email = ""
-    @State var password = ""
+    @StateObject var registerVM = RegisterViewModel()
     @EnvironmentObject var viewModel : AuthencationController
     var body: some View {
         VStack{
-            TextField("Email", text: $email)
+            TextField("Name", text: $registerVM.name)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
-            SecureField("Password", text: $password)
+            TextField("Email", text: $registerVM.email)
+                .disableAutocorrection(true)
+                .autocapitalization(.none)
+            SecureField("Password", text: $registerVM.password)
                 .disableAutocorrection(true)
                 .autocapitalization(.none)
             Button(action: {
-                guard !email.isEmpty, !password.isEmpty else{
-                    return
-                }
-                viewModel.signUp(email: email, password: password)
+                registerVM.register()
             }, label: {
                 Text("Create Account")
                     .foregroundColor(.white)

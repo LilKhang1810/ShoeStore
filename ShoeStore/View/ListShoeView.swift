@@ -28,9 +28,17 @@ struct ListShoeView: View {
             ZStack{
                 ScrollView(.vertical,showsIndicators: false){
                     VStack(alignment:.leading){
-                        Text("Shop")
-                            .font(.system(size: 28).bold())
+                        HStack{
+                            Text("Shop")
+                                .font(.system(size: 28).bold())
+                                .padding()
+                            Spacer()
+                            NavigationLink(destination: SearchView()) {
+                                Image(systemName: "magnifyingglass")
+                                    .foregroundColor(.black)
+                            }
                             .padding()
+                        }
                         ScrollView(.horizontal,showsIndicators: false){
                             HStack{
                                 ForEach(0..<category.count) { i in

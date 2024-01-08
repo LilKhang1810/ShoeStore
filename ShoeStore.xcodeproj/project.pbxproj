@@ -13,6 +13,12 @@
 		220151352B329F7800A757CF /* AccessoryController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220151342B329F7800A757CF /* AccessoryController.swift */; };
 		220151372B329FD700A757CF /* AccessoryModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220151362B329FD700A757CF /* AccessoryModel.swift */; };
 		220CE3992B3FC8980022F693 /* CheckoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220CE3982B3FC8980022F693 /* CheckoutView.swift */; };
+		225E97C22B4A57CD003686D5 /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E97C12B4A57CD003686D5 /* SearchView.swift */; };
+		225E97C42B4BAA4A003686D5 /* RegisterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E97C32B4BAA4A003686D5 /* RegisterController.swift */; };
+		225E97C62B4BAC30003686D5 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E97C52B4BAC30003686D5 /* UserModel.swift */; };
+		225E97C82B4BAD03003686D5 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E97C72B4BAD03003686D5 /* Extension.swift */; };
+		225E97CA2B4BAF85003686D5 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E97C92B4BAF85003686D5 /* MainViewController.swift */; };
+		225E97CE2B4BB1A5003686D5 /* TabsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 225E97CD2B4BB1A5003686D5 /* TabsView.swift */; };
 		22610A932B2BF51B00DC226D /* ShoeStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22610A922B2BF51B00DC226D /* ShoeStoreApp.swift */; };
 		22610A952B2BF51B00DC226D /* AccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22610A942B2BF51B00DC226D /* AccessoryView.swift */; };
 		22610A972B2BF51D00DC226D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22610A962B2BF51D00DC226D /* Assets.xcassets */; };
@@ -36,7 +42,7 @@
 		227AE0152B2C3FFF0080262A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 227AE0142B2C3FFE0080262A /* GoogleService-Info.plist */; };
 		227AE01D2B2C48B20080262A /* SDWebImageSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 227AE01C2B2C48B20080262A /* SDWebImageSwiftUI */; };
 		227F0AC62B35246D005F0A3B /* DetailAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 227F0AC52B35246D005F0A3B /* DetailAccessoryView.swift */; };
-		228DA47A2B39282B00773C01 /* ContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228DA4792B39282B00773C01 /* ContainerView.swift */; };
+		228DA47A2B39282B00773C01 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228DA4792B39282B00773C01 /* MainView.swift */; };
 		22A7DF622B2F4720002F43F1 /* ProductModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A7DF612B2F4720002F43F1 /* ProductModel.swift */; };
 		22A7DF672B2FDC8F002F43F1 /* BestSellShoeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A7DF662B2FDC8F002F43F1 /* BestSellShoeController.swift */; };
 		22A7DF692B2FF0BE002F43F1 /* BrandShowAllView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A7DF682B2FF0BE002F43F1 /* BrandShowAllView.swift */; };
@@ -58,6 +64,12 @@
 		220151342B329F7800A757CF /* AccessoryController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryController.swift; sourceTree = "<group>"; };
 		220151362B329FD700A757CF /* AccessoryModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryModel.swift; sourceTree = "<group>"; };
 		220CE3982B3FC8980022F693 /* CheckoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckoutView.swift; sourceTree = "<group>"; };
+		225E97C12B4A57CD003686D5 /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
+		225E97C32B4BAA4A003686D5 /* RegisterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterController.swift; sourceTree = "<group>"; };
+		225E97C52B4BAC30003686D5 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		225E97C72B4BAD03003686D5 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
+		225E97C92B4BAF85003686D5 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		225E97CD2B4BB1A5003686D5 /* TabsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsView.swift; sourceTree = "<group>"; };
 		22610A8F2B2BF51B00DC226D /* ShoeStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShoeStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22610A922B2BF51B00DC226D /* ShoeStoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoeStoreApp.swift; sourceTree = "<group>"; };
 		22610A942B2BF51B00DC226D /* AccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryView.swift; sourceTree = "<group>"; };
@@ -73,7 +85,7 @@
 		227A55492B43C36B00DE0291 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		227AE0142B2C3FFE0080262A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		227F0AC52B35246D005F0A3B /* DetailAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailAccessoryView.swift; sourceTree = "<group>"; };
-		228DA4792B39282B00773C01 /* ContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerView.swift; sourceTree = "<group>"; };
+		228DA4792B39282B00773C01 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		22A7DF612B2F4720002F43F1 /* ProductModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductModel.swift; sourceTree = "<group>"; };
 		22A7DF662B2FDC8F002F43F1 /* BestSellShoeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestSellShoeController.swift; sourceTree = "<group>"; };
 		22A7DF682B2FF0BE002F43F1 /* BrandShowAllView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandShowAllView.swift; sourceTree = "<group>"; };
@@ -132,6 +144,7 @@
 				22A7DF642B2F47E8002F43F1 /* Controller */,
 				22A7DF652B2F4803002F43F1 /* View */,
 				22610A922B2BF51B00DC226D /* ShoeStoreApp.swift */,
+				225E97C72B4BAD03003686D5 /* Extension.swift */,
 				22610A962B2BF51D00DC226D /* Assets.xcassets */,
 				22610A982B2BF51D00DC226D /* Preview Content */,
 			);
@@ -153,6 +166,7 @@
 				22A7DF612B2F4720002F43F1 /* ProductModel.swift */,
 				220151362B329FD700A757CF /* AccessoryModel.swift */,
 				22CAADBA2B3A73C100B5AA28 /* NewsModel.swift */,
+				225E97C52B4BAC30003686D5 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -170,6 +184,8 @@
 				22633ABE2B3D1E4E0080F20B /* BagViewController.swift */,
 				227A55452B43B93200DE0291 /* FavoriteController.swift */,
 				22BF63702B45B8520041C771 /* AuthencationController.swift */,
+				225E97C32B4BAA4A003686D5 /* RegisterController.swift */,
+				225E97C92B4BAF85003686D5 /* MainViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -184,7 +200,7 @@
 				2201512E2B32854B00A757CF /* ProductfieldShowAll.swift */,
 				22F085402B33E829001493F0 /* CategoryShowAllView.swift */,
 				227F0AC52B35246D005F0A3B /* DetailAccessoryView.swift */,
-				228DA4792B39282B00773C01 /* ContainerView.swift */,
+				228DA4792B39282B00773C01 /* MainView.swift */,
 				22CAADB82B3A700D00B5AA28 /* HomeView.swift */,
 				22CAADBE2B3A77F800B5AA28 /* DetailNewsView.swift */,
 				22633AC02B3D24B50080F20B /* BagView.swift */,
@@ -192,6 +208,8 @@
 				227A55472B43B94300DE0291 /* FavoriteView.swift */,
 				227A55492B43C36B00DE0291 /* ProfileView.swift */,
 				22BF63722B45BA0C0041C771 /* LoginView.swift */,
+				225E97C12B4A57CD003686D5 /* SearchView.swift */,
+				225E97CD2B4BB1A5003686D5 /* TabsView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -285,18 +303,22 @@
 				220151352B329F7800A757CF /* AccessoryController.swift in Sources */,
 				2201512D2B31F0B500A757CF /* ShoeViewController.swift in Sources */,
 				220CE3992B3FC8980022F693 /* CheckoutView.swift in Sources */,
-				228DA47A2B39282B00773C01 /* ContainerView.swift in Sources */,
+				228DA47A2B39282B00773C01 /* MainView.swift in Sources */,
 				22633ABF2B3D1E4E0080F20B /* BagViewController.swift in Sources */,
 				22CAADBD2B3A74A900B5AA28 /* NewsController.swift in Sources */,
+				225E97CE2B4BB1A5003686D5 /* TabsView.swift in Sources */,
 				22633AC12B3D24B50080F20B /* BagView.swift in Sources */,
 				22610A952B2BF51B00DC226D /* AccessoryView.swift in Sources */,
 				22CAADBB2B3A73C100B5AA28 /* NewsModel.swift in Sources */,
 				22BF63712B45B8520041C771 /* AuthencationController.swift in Sources */,
+				225E97C62B4BAC30003686D5 /* UserModel.swift in Sources */,
 				220151332B328E9000A757CF /* ProductFieldController.swift in Sources */,
 				22A7DF6B2B3142CD002F43F1 /* RecommendShoeController.swift in Sources */,
 				2201512F2B32854B00A757CF /* ProductfieldShowAll.swift in Sources */,
+				225E97CA2B4BAF85003686D5 /* MainViewController.swift in Sources */,
 				227A554A2B43C36B00DE0291 /* ProfileView.swift in Sources */,
 				22610ABC2B2C004100DC226D /* BrandController.swift in Sources */,
+				225E97C22B4A57CD003686D5 /* SearchView.swift in Sources */,
 				22F085412B33E829001493F0 /* CategoryShowAllView.swift in Sources */,
 				227F0AC62B35246D005F0A3B /* DetailAccessoryView.swift in Sources */,
 				220151372B329FD700A757CF /* AccessoryModel.swift in Sources */,
@@ -307,8 +329,10 @@
 				22610ABA2B2BFF5B00DC226D /* BrandModel.swift in Sources */,
 				22E766A32B2DF33D00985D2B /* DetailProductView.swift in Sources */,
 				22CAADBF2B3A77F800B5AA28 /* DetailNewsView.swift in Sources */,
+				225E97C82B4BAD03003686D5 /* Extension.swift in Sources */,
 				22A7DF622B2F4720002F43F1 /* ProductModel.swift in Sources */,
 				22610A932B2BF51B00DC226D /* ShoeStoreApp.swift in Sources */,
+				225E97C42B4BAA4A003686D5 /* RegisterController.swift in Sources */,
 				22610ABE2B2C04A900DC226D /* ListShoeView.swift in Sources */,
 				22A7DF692B2FF0BE002F43F1 /* BrandShowAllView.swift in Sources */,
 				22CAADB92B3A700E00B5AA28 /* HomeView.swift in Sources */,
