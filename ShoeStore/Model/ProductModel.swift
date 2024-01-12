@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct Shoe: Hashable{
+    var id : String
     var brand: String
     var description: String
     var img_url:String

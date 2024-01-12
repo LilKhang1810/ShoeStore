@@ -23,6 +23,7 @@ class BagController: ObservableObject {
             if let snapshot = snapshot {
                 self.shoes = snapshot.documents.compactMap { document in
                     let data = document.data()
+                    let id = document.documentID
                     let brand = data["brand"] as? String ?? ""
                     let name = data["name"] as? String ?? ""
                     let img_url = data["img_url"] as? String ?? ""
@@ -32,7 +33,7 @@ class BagController: ObservableObject {
                     let status = data["status"] as? String ?? ""
                     let type = data["type"] as? String ?? ""
                     let quantity = data["quantity"] as? Int ?? 0
-                    return Shoe(brand: brand, description: description, img_url: img_url, name: name, price: price, rating: rating, status: status, type: type,quantity: quantity)
+                    return Shoe(id: id,brand: brand, description: description, img_url: img_url, name: name, price: price, rating: rating, status: status, type: type,quantity: quantity)
                 }
             }
         }
@@ -51,6 +52,7 @@ class BagController: ObservableObject {
                 // Cập nhật danh sách khi có sự kiện thay đổi
                 self.shoes = snapshot.documents.compactMap { document in
                     let data = document.data()
+                    let id = document.documentID
                     let brand = data["brand"] as? String ?? ""
                     let name = data["name"] as? String ?? ""
                     let img_url = data["img_url"] as? String ?? ""
@@ -60,9 +62,29 @@ class BagController: ObservableObject {
                     let status = data["status"] as? String ?? ""
                     let type = data["type"] as? String ?? ""
                     let quantity = data["quantity"] as? Int ?? 0
-                    return Shoe(brand: brand, description: description, img_url: img_url, name: name, price: price, rating: rating, status: status, type: type,quantity: quantity)
+                    return Shoe(id:id,brand: brand, description: description, img_url: img_url, name: name, price: price, rating: rating, status: status, type: type,quantity: quantity)
                 }
             }
         }
     }
+    func delete(id: String){
+        let db = Firestore.firestore()
+        let documentRef = db.collection("Cart").document(id)
+
+        documentRef.getDocument { (document, error) in
+            if let document = document, document.exists {
+                // Document tồn tại, thực hiện xóa
+                documentRef.delete { error in
+                    if let error = error {
+                        print("Error deleting document: \(error)")
+                    } else {
+                        print("Document successfully deleted!")
+                    }
+                }
+            } else {
+                print("Document does not exist")
+            }
+        }
+    }
+
 }

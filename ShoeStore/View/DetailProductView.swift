@@ -170,7 +170,7 @@ struct DetailProductView: View {
 
 struct DetailProductView_Previews: PreviewProvider {
     static var previews: some View {
-        DetailProductView(product: Shoe(brand: "",
+        DetailProductView(product: Shoe(id:"",brand: "",
                                         description: "The signature adidas Stan Smith shoe line explores the timeless world of BAPE — resulting in a design made for the golf course. With a design suitable for both the golf course and clubhouse, these shoes blend classic tennis style with golf-appropriate details.",
                                         img_url: "https://assets.adidas.com/images/w_600,f_auto,q_auto/87cd0b80e0434c758b15ae9801598eb2_9366/Giay_Chay_Bo_adidas_4DFWD_2_Xam_GX9250_01_standard.jpg",
                                         name: "Adidas 4DFWD 2",

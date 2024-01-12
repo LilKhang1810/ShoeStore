@@ -23,6 +23,7 @@ class RecommendShoeController: ObservableObject{
             if let snapshot = snapshot{
                 for document in snapshot.documents{
                     let data = document.data()
+                    let id = document.documentID
                     let brand = data["brand"] as? String ?? ""
                     let name = data["name"] as? String ?? ""
                     let img_url = data["img_url"] as? String ?? ""
@@ -31,7 +32,7 @@ class RecommendShoeController: ObservableObject{
                     let rating = data["rating"] as? String ?? ""
                     let status = data["status"] as? String ?? ""
                     let type = data["type"] as? String ?? ""
-                    let recshoe = Shoe(brand: brand, description: description, img_url: img_url, name: name, price: price, rating: rating, status: status,type: type)
+                    let recshoe = Shoe(id:id,brand: brand, description: description, img_url: img_url, name: name, price: price, rating: rating, status: status,type: type)
                     self.recShoes.append(recshoe)
                     
                 }

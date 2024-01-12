@@ -11,6 +11,7 @@ struct LoginView: View {
     @State var email = ""
     @State var password = ""
     @EnvironmentObject var viewModel : AuthencationController
+    @Environment(\.dismiss) var dismiss
     var body: some View {
         NavigationView{
             ZStack{
@@ -101,28 +102,65 @@ struct LoginView_Previews: PreviewProvider {
 struct SignUpView: View {
     @StateObject var registerVM = RegisterViewModel()
     @EnvironmentObject var viewModel : AuthencationController
+    @Environment(\.dismiss) var dismiss
     var body: some View {
-        VStack{
-            TextField("Name", text: $registerVM.name)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-            TextField("Email", text: $registerVM.email)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-            SecureField("Password", text: $registerVM.password)
-                .disableAutocorrection(true)
-                .autocapitalization(.none)
-            Button(action: {
-                registerVM.register()
-            }, label: {
-                Text("Create Account")
-                    .foregroundColor(.white)
-                    .frame(width: 150, height: 50)
-                    .background(.black)
-                    .cornerRadius(20)
-            })
+        ZStack{
+            Image("signup")
+                .resizable()
+                .frame(height: .infinity)
+                .edgesIgnoringSafeArea(.all)
+                
+            VStack{
+                Spacer(minLength: 200)
+                NeumorphicStyleTextField{
+                    TextField("Name", text: $registerVM.name)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                }
+                .padding(.horizontal)
+                NeumorphicStyleTextField{
+                    TextField("Email", text: $registerVM.email)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                }
+                .padding(.horizontal)
+                NeumorphicStyleTextField{
+                    SecureField("Password", text: $registerVM.password)
+                        .disableAutocorrection(true)
+                        .autocapitalization(.none)
+                }
+                .padding(.horizontal)
+                HStack{
+                    Button(action: {dismiss()}, label: {
+                        Text("Already has an account")
+                            .foregroundColor(.black)
+                            .underline()
+                    })
+                }
+                .frame(width: 350)
+                .padding(.trailing,130)
+                .padding(.top,40)
+                .padding(.bottom,40)
+                Button(action: {
+                    registerVM.register()
+                }, label: {
+                    Text("Create Account")
+                        .foregroundColor(.white)
+                        .frame(width: 150, height: 50)
+                        .background(.black)
+                        .cornerRadius(20)
+                })
+                Spacer()
+            }
+            .frame(width: 350,height: 600,alignment: .center)
+            .background(.ultraThinMaterial)
+            .cornerRadius(20)
+            .padding()
+            (Text("Create ") +
+             Text("SNEAKER").underline() + Text(" passport")).font(.system(size: 40).bold())
+                .offset(y:-220)
         }
-        .padding()
+        .navigationBarBackButtonHidden(true)
     }
 }
 

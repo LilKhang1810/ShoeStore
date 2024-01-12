@@ -23,6 +23,8 @@ struct ListShoeView: View {
             GridItem(.fixed(100)),
             GridItem(.flexible()),
         ]
+    @Namespace var namespace
+    @State var show = false
     var body: some View {
         NavigationStack{
             ZStack{
@@ -97,7 +99,7 @@ struct ListShoeView: View {
                         VStack{
                             LazyVGrid(columns: Array(repeating: GridItem(), count: 3),spacing: 20){
                                 ForEach(bestshoeManager.shoes.prefix(6),id:\.self) { item in
-                                    NavigationLink(destination: DetailProductView(product:Shoe(brand: item.brand, description: item.description, img_url: item.img_url, name: item.name, price: item.price, rating: item.rating, status: item.status, type: item.type))) {
+                                    NavigationLink(destination: DetailProductView(product:Shoe(id:item.id,brand: item.brand, description: item.description, img_url: item.img_url, name: item.name, price: item.price, rating: item.rating, status: item.status, type: item.type))) {
                                         VStack(alignment:.leading,spacing:20){
                                             AnimatedImage(url: URL(string: item.img_url))
                                                 .resizable()
@@ -114,6 +116,7 @@ struct ListShoeView: View {
                                         }
                                         .frame(width: 100,height: 200)
                                     }
+                                    
                                 }
                             }
                             NavigationLink(destination: ProductFieldShowAll( productStatus: "best")) {
@@ -125,6 +128,7 @@ struct ListShoeView: View {
                                         .foregroundColor(.black))
                             }
                         }
+                        
                         Group{
                             Text("Something you may like")
                                 .font(.system(size:20))
@@ -150,7 +154,7 @@ struct ListShoeView: View {
                             HStack(spacing: 30){
                                 ForEach(recshoeManager.recShoes, id: \.self) {shoe in
                                     NavigationLink {
-                                        DetailProductView(product: Shoe(brand: shoe.brand,
+                                        DetailProductView(product: Shoe(id:shoe.id,brand: shoe.brand,
                                                                         description:shoe.description,
                                                                         img_url: shoe.img_url,
                                                                         name: shoe.name,
