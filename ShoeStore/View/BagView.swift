@@ -34,7 +34,7 @@ struct BagView: View {
                                         .foregroundColor(.black)
                                         Spacer()
                                         Button(action: {
-                                            showingAlert = true
+                                            bagController.delete(id: shoe.id)
                                         }){
                                             Image(systemName: "trash")
                                                 .foregroundColor(.black)

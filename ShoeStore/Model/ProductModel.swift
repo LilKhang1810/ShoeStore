@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-struct Shoe: Hashable{
+struct Shoe: Codable, Hashable{
     var id : String
     var brand: String
     var description: String

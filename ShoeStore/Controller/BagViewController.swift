@@ -1,10 +1,10 @@
 import SwiftUI
 import Firebase
-
+import FirebaseAuth
 class BagController: ObservableObject {
     @Published var shoes: [Shoe] = []
     private let db = Firestore.firestore()
-
+    private let uId = Auth.auth().currentUser?.uid
     init() {
         fetchShoe()
         // Bắt đầu lắng nghe sự kiện thay đổi
@@ -12,8 +12,11 @@ class BagController: ObservableObject {
     }
 
     func fetchShoe() {
+        guard let uId else{
+            return
+        }
         // Fetch dữ liệu ban đầu
-        let ref = db.collection("Cart")
+        let ref = db.collection("User").document(uId).collection("Cart")
         ref.getDocuments { snapshot, error in
             guard error == nil else {
                 print(error!.localizedDescription)
@@ -40,7 +43,10 @@ class BagController: ObservableObject {
     }
 
     func startListeningForChanges() {
-        let ref = db.collection("Cart")
+        guard let uId else{
+            return
+        }
+        let ref = db.collection("User").document(uId).collection("Cart")
         // Lắng nghe sự kiện thay đổi
         ref.addSnapshotListener { snapshot, error in
             guard error == nil else {
@@ -68,23 +74,48 @@ class BagController: ObservableObject {
         }
     }
     func delete(id: String){
+        guard let uId else{
+            return
+        }
         let db = Firestore.firestore()
-        let documentRef = db.collection("Cart").document(id)
-
-        documentRef.getDocument { (document, error) in
-            if let document = document, document.exists {
-                // Document tồn tại, thực hiện xóa
-                documentRef.delete { error in
-                    if let error = error {
-                        print("Error deleting document: \(error)")
-                    } else {
-                        print("Document successfully deleted!")
-                    }
-                }
-            } else {
-                print("Document does not exist")
+        
+        db.collection("User")
+            .document(uId)
+            .collection("Cart")
+            .document(id)
+            .delete()
+    }
+    func addToCart(item: Shoe) async{
+        guard let uId else{
+            return
+        }
+        
+        let newId  = UUID().uuidString
+        
+        let newItem = Shoe(id: newId,
+                           brand: item.brand,
+                           description: item.description,
+                           img_url: item.img_url,
+                           name: item.name,
+                           price: item.price,
+                           rating: item.rating,
+                           status: item.status,
+                           type: item.type)
+        let db = Firestore.firestore()
+        do{
+            let cartItem = db.collection("User").document(uId).collection("Cart")
+            if let existingItem = try await cartItem.whereField("name", isEqualTo: item.name).getDocuments().documents.first{
+                
+                let currentQuantity = existingItem.data()["quantity"] as? Int ?? 1
+                try await existingItem.reference.updateData(["quantity": currentQuantity+1])
+            }
+            else{
+                let documentRef = cartItem.document(newId)
+                try await documentRef.setData(newItem.asDictionary())
             }
         }
+        catch {
+            print("Error adding/updating document: \(error)")
+        }
     }
-
 }

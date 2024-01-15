@@ -11,6 +11,7 @@ import Firebase
 struct DetailProductView: View {
     @State var product: Shoe
     @EnvironmentObject var shoeManager: ShoeViewController
+    @StateObject var bagViewController =  BagController()
     @Environment(\.dismiss) var dismiss
     @State var showSizeScreen: Bool = false
     @State private var selectedSize: Int = 39
@@ -52,8 +53,11 @@ struct DetailProductView: View {
                                     )
                             }
                             Button(action: {
+//                                Task{
+//                                    await addToCart(item: product)
+//                                }
                                 Task{
-                                    await addToCart(item: product)
+                                    await bagViewController.addToCart(item: product)
                                 }
                             }) {
                                 Text("Add to bag")
@@ -104,39 +108,6 @@ struct DetailProductView: View {
             }
         }
     }
-    func addToCart(item: Shoe) async {
-        let db = Firestore.firestore()
-
-        do {
-            let cartCollection = db.collection("Cart")
-            // Kiểm tra xem sản phẩm đã tồn tại trong giỏ hàng hay chưa
-            if let existingDocument = try await cartCollection.whereField("name", isEqualTo: item.name).getDocuments().documents.first {
-                // Nếu sản phẩm đã tồn tại, tăng số lượng
-                let currentQuantity = existingDocument.data()["quantity"] as? Int ?? 1
-                try await existingDocument.reference.updateData(["quantity": currentQuantity + 1])
-                showAlert(title: "Successed", message: "Added to bag successfully")
-            } else {
-                // Nếu sản phẩm chưa có trong giỏ hàng, thêm mới với số lượng là 1
-                let documentRef = cartCollection.document()
-                try await documentRef.setData([
-                    "name" : item.name,
-                    "price": item.price,
-                    "img_url": item.img_url,
-                    "rating": item.rating,
-                    "description": item.description,
-                    "brand": item.brand,
-                    "type": item.type,
-                    "status": item.status,
-                    "quantity": 1
-                ])
-                showAlert(title: "Successed", message: "Added to bag successfully")
-            }
-        } catch {
-            print("Error adding/updating document: \(error)")
-            showAlert(title: "Error", message: "Failed to add/update item to bag.")
-        }
-    }
-
     func showAlert(title: String, message: String) {
             titleAlert = title
             messageAlert = message
