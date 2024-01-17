@@ -31,7 +31,8 @@ class AccessoryController: ObservableObject{
                     let description = data["description"] as? String ?? ""
                     let price = data["price"] as? Double ?? 0.0
                     let rating = data["rating"] as? String ?? ""
-                    let product = Accessory(name: name, description: description, img_url: img_url, price: price, rating: rating)
+                    let type = data["type"] as? String ?? ""
+                    let product = Accessory(name: name, description: description, img_url: img_url, price: price, rating: rating,type:type)
                     self.accessories.append(product)
                 }
             }

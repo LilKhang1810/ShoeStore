@@ -13,4 +13,5 @@ struct Accessory: Hashable{
     var img_url: String
     var price: Double
     var rating: String
+    var type : String
 }

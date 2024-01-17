@@ -41,17 +41,6 @@ struct ListShoeView: View {
                             }
                             .padding()
                         }
-                        ScrollView(.horizontal,showsIndicators: false){
-                            HStack{
-                                ForEach(0..<category.count) { i in
-                                    CategoryView(isActive: i == selectedIndex, text: category[i])
-                                        .onTapGesture {
-                                            selectedIndex = i
-                                        }
-                                }
-                            }
-                            .padding()
-                        }
                         Divider()
                         Text("This week's hightlight")
                             .font(.system(size: 20).bold())

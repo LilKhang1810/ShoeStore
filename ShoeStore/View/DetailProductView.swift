@@ -58,6 +58,7 @@ struct DetailProductView: View {
 //                                }
                                 Task{
                                     await bagViewController.addToCart(item: product)
+                                    showingAlert.toggle()
                                 }
                             }) {
                                 Text("Add to bag")
@@ -68,9 +69,10 @@ struct DetailProductView: View {
                                     .cornerRadius(20)
                             }
                             .alert(isPresented: $showingAlert) {
-                                Alert(title: Text(titleAlert), message:Text(messageAlert), dismissButton: .default(Text("OK")))
+                                Alert(title: Text("Added to bag"), message:Text("Your shoe is added to bag successfully"), dismissButton: .default(Text("OK")))
                             }
-                            Button(action: {addToFavorite(item: product)}) {
+                            Button(action: {addToFavorite(item: product)
+                                showingAlert.toggle()}) {
                                 Text("Add to favorite")
                                     .frame(width: 320, height: 20)
                                     .foregroundColor(.white)
@@ -78,13 +80,13 @@ struct DetailProductView: View {
                                     .background(.black)
                                     .cornerRadius(20)
                             }
+                                .padding(.bottom,20)
                             .alert(isPresented: $showingAlert) {
-                                Alert(title: Text(titleAlert), message:Text(messageAlert), dismissButton: .default(Text("OK")))
+                                Alert(title: Text(bagViewController.titleAlert), message:Text(bagViewController.messageAlert), dismissButton: .default(Text("OK")))
                             }
                         }
                     }
                 }
-
                 sizeScreen(showSizeScreen: $showSizeScreen, selectedSize: $selectedSize) { newSize in
                     // Handle the selected size here
                     selectedSize = newSize
@@ -108,11 +110,6 @@ struct DetailProductView: View {
             }
         }
     }
-    func showAlert(title: String, message: String) {
-            titleAlert = title
-            messageAlert = message
-            showingAlert = true
-    }
     func addToFavorite(item:Shoe){
         let db = Firestore.firestore()
         let favCollection = db.collection("Favorite")
@@ -131,9 +128,9 @@ struct DetailProductView: View {
             error in
             if let error = error{
                 print("Failed adding document: \(error)")
-                showAlert(title: "Error", message: "Failed adding to favorite")
+                    bagViewController.showAlert(title: "Error", message: "Failed adding to favorite")
             }else{
-                showAlert(title: "Added to favorite", message: "Added to your favorite successfully")
+                bagViewController.showAlert(title: "Added to favorite", message: "Added to your favorite successfully")
             }
         }
     }

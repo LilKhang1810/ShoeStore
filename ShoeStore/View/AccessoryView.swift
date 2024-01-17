@@ -8,15 +8,18 @@
 import SwiftUI
 import SDWebImageSwiftUI
 struct AccessoryView: View {
-    @ObservedObject var accessoryController = AccessoryController()
+    @ObservedObject var accessoryController = ShoeViewController()
     @Environment(\.dismiss) var dismiss
+    var filteredShoes: [Shoe] {
+        accessoryController.shoes.filter { $0.type == "Accessory" }
+    }
     var body: some View {
         NavigationStack{
             ScrollView{
                 VStack{
                     LazyVGrid(columns: Array(repeating: GridItem(), count: 2), spacing: 20) {
-                        ForEach(accessoryController.accessories, id: \.self) { item in
-                            NavigationLink(destination:DetailAccessoryView(product: Accessory(name: item.name, description: item.description, img_url: item.img_url, price: item.price, rating: item.rating))) {
+                        ForEach(filteredShoes, id: \.self) { item in
+                            NavigationLink(destination:DetailAccessoryView(product: Shoe(id: item.id, brand: item.brand, description: item.description, img_url: item.img_url, name: item.name, price: item.price, rating: item.rating, status: item.status, type: item.type))){
                                 VStack {
                                     AnimatedImage(url: URL(string: item.img_url))
                                         .resizable()

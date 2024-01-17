@@ -5,6 +5,9 @@ class BagController: ObservableObject {
     @Published var shoes: [Shoe] = []
     private let db = Firestore.firestore()
     private let uId = Auth.auth().currentUser?.uid
+    @State var showingAlert: Bool = false
+    @State var messageAlert = ""
+    @State var titleAlert = ""
     init() {
         fetchShoe()
         // Bắt đầu lắng nghe sự kiện thay đổi
@@ -108,14 +111,22 @@ class BagController: ObservableObject {
                 
                 let currentQuantity = existingItem.data()["quantity"] as? Int ?? 1
                 try await existingItem.reference.updateData(["quantity": currentQuantity+1])
+                showAlert(title: "Added to bag", message: "Your shoe is added to bag successfully")
+                
             }
             else{
                 let documentRef = cartItem.document(newId)
                 try await documentRef.setData(newItem.asDictionary())
+                showAlert(title: "Added to bag", message: "Your shoe is added to bag successfully")
             }
         }
         catch {
             print("Error adding/updating document: \(error)")
         }
+    }
+    func showAlert(title: String, message: String){
+        titleAlert = title
+        messageAlert = message
+        showingAlert = true
     }
 }
